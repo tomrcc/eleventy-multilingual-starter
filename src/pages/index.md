@@ -14,7 +14,16 @@ seo:
   open_graph_type:
   no_index: false
 layout: layouts/component-page.html
-permalink: /
+# Built once per locale so the Featured Posts block lists that locale's posts.
+# The page's own text is still translated by Rosey, via one shared set of keys.
+pagination:
+  data: collections.localeHomes
+  size: 1
+  alias: home
+permalink: '{{ home.url }}'
+eleventyComputed:
+  locale: '{{ home.locale }}'
+  posts_collection: '{{ home.posts_collection }}'
 eleventyExcludeFromCollections: false
 content_blocks:
   - _type: components/hero

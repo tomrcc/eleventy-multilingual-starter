@@ -133,6 +133,12 @@
       "pages": {},
       "total": 0
     },
+    "de/index.html": {
+      "original": "de/index.html",
+      "value": null,
+      "pages": {},
+      "total": 0
+    },
     "fr/blog/1/index.html": {
       "original": "fr/blog/1/index.html",
       "value": null,
@@ -195,6 +201,12 @@
     },
     "fr/blog/tags/whistles/index.html": {
       "original": "fr/blog/tags/whistles/index.html",
+      "value": null,
+      "pages": {},
+      "total": 0
+    },
+    "fr/index.html": {
+      "original": "fr/index.html",
       "value": null,
       "pages": {},
       "total": 0

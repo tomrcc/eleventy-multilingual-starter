@@ -137,6 +137,17 @@ module.exports = async function (eleventyConfig) {
     );
   }
 
+  // Pages that list posts must be built once per locale — Rosey copies HTML
+  // and can't re-run a template, so a copied page keeps the default language's
+  // post titles. Text-only pages don't need this; Rosey handles those.
+  eleventyConfig.addCollection("localeHomes", () =>
+    LOCALE_CODES.map((code) => ({
+      locale: code,
+      url: `${localePrefix(code)}/`,
+      posts_collection: LOCALES[code].collection,
+    }))
+  );
+
   // One entry per output page of the blog index, across every locale, so a
   // single blog.md serves them all and its shared strings get one Rosey key.
   eleventyConfig.addCollection("blogListingPages", function (collectionApi) {

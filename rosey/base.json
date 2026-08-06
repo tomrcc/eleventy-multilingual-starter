@@ -66,6 +66,7 @@
         "de/blog/tags/marketing/index.html": 1,
         "de/blog/tags/technology/index.html": 1,
         "de/blog/tags/whistles/index.html": 1,
+        "de/index.html": 1,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 1,
         "fr/blog/all-the-bells-and-whistles/index.html": 1,
@@ -77,9 +78,10 @@
         "fr/blog/tags/marketing/index.html": 1,
         "fr/blog/tags/technology/index.html": 1,
         "fr/blog/tags/whistles/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 34
+      "total": 36
     },
     "footer:copyright": {
       "original": "MyCompany. All rights reserved.",
@@ -107,6 +109,7 @@
         "de/blog/tags/marketing/index.html": 1,
         "de/blog/tags/technology/index.html": 1,
         "de/blog/tags/whistles/index.html": 1,
+        "de/index.html": 1,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 1,
         "fr/blog/all-the-bells-and-whistles/index.html": 1,
@@ -118,9 +121,10 @@
         "fr/blog/tags/marketing/index.html": 1,
         "fr/blog/tags/technology/index.html": 1,
         "fr/blog/tags/whistles/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 34
+      "total": 36
     },
     "footer:rss-feed": {
       "original": "RSS Feed",
@@ -148,6 +152,7 @@
         "de/blog/tags/marketing/index.html": 1,
         "de/blog/tags/technology/index.html": 1,
         "de/blog/tags/whistles/index.html": 1,
+        "de/index.html": 1,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 1,
         "fr/blog/all-the-bells-and-whistles/index.html": 1,
@@ -159,121 +164,150 @@
         "fr/blog/tags/marketing/index.html": 1,
         "fr/blog/tags/technology/index.html": 1,
         "fr/blog/tags/whistles/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 34
+      "total": 36
     },
     "index:01acab69-cdbe-492c-a70f-e4dc5fb36658:6e12ae2e-97e7-49b2-80f4-38fe5282e494:button_text": {
       "original": "GitHub",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:01acab69-cdbe-492c-a70f-e4dc5fb36658:heading": {
       "original": "\n            Keep what you need. Delete the rest.\n          ",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:01acab69-cdbe-492c-a70f-e4dc5fb36658:text": {
       "original": "\n            <p>To help save you time, some features are set up in this template, like:</p>\n<ul>\n<li>Translations powered by <a href=\"https://rosey.cc/\">Rosey</a> and the Rosey CloudCannon Connector</li>\n<li>A split-by-directory blog, with a whole content file per language</li>\n<li><a href=\"https://cloudcannon.com/documentation/articles/introduction-to-editable-regions/\">Editable regions</a></li>\n<li>Blog with pagination, tags and <a href=\"https://cloudcannon.com/documentation/articles/snippets-using-eleventy-shortcodes/\">snippets</a></li>\n<li><a href=\"https://www.11ty.dev/docs/plugins/image/\">Image optimization</a></li>\n<li>SEO Controls</li>\n<li>Responsive header and footer</li>\n<li><a href=\"https://fontawesome.com/search?o=r&amp;m=free&amp;s=solid\">Font Awesome Icons</a></li>\n<li>Schemas for adding new pages</li>\n<li>Editable color pallete</li>\n<li>Markdown styles</li>\n<li>CloudCannon configuration</li>\n</ul>\n\n          ",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:0f1b6a7c-2d3e-4f50-9a1b-7c8d9e0f1a2b:description": {
       "original": "\n      <p>A hand-picked selection of posts from the blog.</p>\n\n    ",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:0f1b6a7c-2d3e-4f50-9a1b-7c8d9e0f1a2b:heading": {
       "original": "Featured posts",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:8b6c6715-bec1-4872-a9cd-0f56b06d301e:0ab0c3c9-3440-4c7f-a3a7-80506f747ac0:button_text": {
       "original": "GitHub",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:8b6c6715-bec1-4872-a9cd-0f56b06d301e:cd883c9e-ef47-4d5f-8e76-725ef0c7b8e3:button_text": {
       "original": "CloudCannon",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:8b6c6715-bec1-4872-a9cd-0f56b06d301e:heading": {
       "original": "Eleventy Multilingual Starter",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:8b6c6715-bec1-4872-a9cd-0f56b06d301e:subheading": {
       "original": "\n        <p>A starting point for <strong>developers building a multilingual website with Eleventy, Rosey and CloudCannon</strong>. Translate this page from the Visual Editor, or edit the locale files directly — both round-trip to the same place.</p>\n\n      ",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:f8d20580-8173-4f97-bb2b-ad6729854cb6:b558262b-21f6-4d3c-8a33-0c3ff076cf48:button_text": {
       "original": "GitHub",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:f8d20580-8173-4f97-bb2b-ad6729854cb6:heading": {
       "original": "\n            You choose your editing experience.\n          ",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:f8d20580-8173-4f97-bb2b-ad6729854cb6:text": {
       "original": "\n            <p>CloudCannon is a flexible Git-backed CMS that specialises in editing markdown and data files.</p>\n<p>Visual editing allows you to preview your changes live before you save them.</p>\n<p>Git-backed means you can keep all your familiar git workflows, while providing an easy-to-understand interface for non-technical editors to collaborate via Git.</p>\n\n          ",
       "value": null,
       "pages": {
+        "de/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 1
+      "total": 3
     },
     "index:page_description": {
       "original": "A starting point for developers building a multilingual website with Eleventy, Rosey and CloudCannon. Create your own copy, and start translating.",
       "value": null,
       "pages": {
+        "de/index.html": 2,
+        "fr/index.html": 2,
         "index.html": 2
       },
-      "total": 2
+      "total": 6
     },
     "index:page_title": {
       "original": "Home | Eleventy Multilingual Starter",
       "value": null,
       "pages": {
+        "de/index.html": 3,
+        "fr/index.html": 3,
         "index.html": 3
       },
-      "total": 3
+      "total": 9
     },
     "nav:blog": {
       "original": "Blog",
@@ -301,6 +335,7 @@
         "de/blog/tags/marketing/index.html": 1,
         "de/blog/tags/technology/index.html": 1,
         "de/blog/tags/whistles/index.html": 1,
+        "de/index.html": 1,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 1,
         "fr/blog/all-the-bells-and-whistles/index.html": 1,
@@ -312,9 +347,10 @@
         "fr/blog/tags/marketing/index.html": 1,
         "fr/blog/tags/technology/index.html": 1,
         "fr/blog/tags/whistles/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 34
+      "total": 36
     },
     "nav:rss-feed": {
       "original": "RSS Feed",
@@ -342,6 +378,7 @@
         "de/blog/tags/marketing/index.html": 1,
         "de/blog/tags/technology/index.html": 1,
         "de/blog/tags/whistles/index.html": 1,
+        "de/index.html": 1,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 1,
         "fr/blog/all-the-bells-and-whistles/index.html": 1,
@@ -353,9 +390,10 @@
         "fr/blog/tags/marketing/index.html": 1,
         "fr/blog/tags/technology/index.html": 1,
         "fr/blog/tags/whistles/index.html": 1,
+        "fr/index.html": 1,
         "index.html": 1
       },
-      "total": 34
+      "total": 36
     },
     "recent_posts": {
       "original": "Recent Posts",
@@ -474,6 +512,7 @@
         "de/blog/tags/marketing/index.html": 5,
         "de/blog/tags/technology/index.html": 5,
         "de/blog/tags/whistles/index.html": 5,
+        "de/index.html": 3,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 2,
         "fr/blog/all-the-bells-and-whistles/index.html": 2,
@@ -485,9 +524,10 @@
         "fr/blog/tags/marketing/index.html": 5,
         "fr/blog/tags/technology/index.html": 5,
         "fr/blog/tags/whistles/index.html": 5,
+        "fr/index.html": 3,
         "index.html": 3
       },
-      "total": 117
+      "total": 123
     },
     "tags:email": {
       "original": "Email",
@@ -545,6 +585,7 @@
         "de/blog/tags/marketing/index.html": 5,
         "de/blog/tags/technology/index.html": 5,
         "de/blog/tags/whistles/index.html": 6,
+        "de/index.html": 3,
         "fr/blog/1/index.html": 1,
         "fr/blog/5-things-to-improve-you-email-templates/index.html": 2,
         "fr/blog/all-the-bells-and-whistles/index.html": 2,
@@ -556,9 +597,10 @@
         "fr/blog/tags/marketing/index.html": 5,
         "fr/blog/tags/technology/index.html": 5,
         "fr/blog/tags/whistles/index.html": 6,
+        "fr/index.html": 3,
         "index.html": 3
       },
-      "total": 117
+      "total": 123
     }
   }
 }
