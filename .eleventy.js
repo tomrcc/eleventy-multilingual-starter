@@ -4,8 +4,22 @@ const MarkdownIt = require("markdown-it");
 
 /* 11ty config imports */
 const image_shortcode = require("./_11ty_config/image_shortcode");
+const {
+  DEFAULT_LOCALE,
+  LOCALES,
+  LOCALE_CODES,
+  localePrefix,
+} = require("./_11ty_config/locales");
 
 const md = new MarkdownIt({ html: true });
+
+const PAGE_SIZE = 3;
+
+// Tag slugs are the URL and stay lowercase; only the label is translated. One
+// helper so every render site emits the same string — Rosey matches whole
+// strings per key, so "Seo" in one place and "SEO" in another is a permanently
+// stale translation.
+const TAG_LABEL_OVERRIDES = { seo: "SEO", cms: "CMS", rss: "RSS" };
 
 // biome-ignore lint/complexity/useArrowFunction: <explanation>
 module.exports = async function (eleventyConfig) {
@@ -83,9 +97,100 @@ module.exports = async function (eleventyConfig) {
     }
   );
 
-  // Custom Collection
-  eleventyConfig.addCollection("posts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("src/pages/blog/**/*.md");
+  eleventyConfig.addLiquidFilter("tagLabel", function (tag) {
+    if (!tag) return "";
+    const slug = String(tag).toLowerCase();
+    return (
+      TAG_LABEL_OVERRIDES[slug] ?? slug.charAt(0).toUpperCase() + slug.slice(1)
+    );
+  });
+
+  eleventyConfig.addLiquidFilter("localDate", function (date, locale) {
+    const config = LOCALES[locale] || LOCALES[DEFAULT_LOCALE];
+    return new Intl.DateTimeFormat(config.dateLocale, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }).format(new Date(date));
+  });
+
+  // Rosey rewrites internal links on the pages it generates, but leaves
+  // pre-existing locale pages (our blog_fr/blog_de output) alone — that's what
+  // makes split-by-directory work. So locale pages have to prefix their own
+  // links, while default-language pages stay bare for Rosey to handle.
+  eleventyConfig.addLiquidFilter("localizeUrl", function (url, locale) {
+    if (!url || !locale || locale === DEFAULT_LOCALE) return url;
+    if (!url.startsWith("/") || url.startsWith("//")) return url;
+    // Skip anything with a file extension (/feed.xml, /assets/x.pdf). Those are
+    // emitted once at the root, so prefixing them points at nothing. Rosey
+    // leaves them alone on generated pages for the same reason.
+    if (/\.[a-z0-9]+$/i.test(url)) return url;
+    return `/${locale}${url}`;
+  });
+
+  // Custom Collections
+  const byDateDesc = (a, b) => b.date - a.date;
+  const postsFor = (collectionApi, code) =>
+    collectionApi
+      .getFilteredByGlob(`src/pages/${LOCALES[code].postsDir}/**/*.md`)
+      .sort(byDateDesc);
+
+  for (const code of LOCALE_CODES) {
+    eleventyConfig.addCollection(LOCALES[code].collection, (collectionApi) =>
+      postsFor(collectionApi, code)
+    );
+  }
+
+  // One entry per output page of the blog index, across every locale. Lets a
+  // single blog.md template serve all locales, so its shared strings live in
+  // one file and get one Rosey key.
+  eleventyConfig.addCollection("blogListingPages", function (collectionApi) {
+    const pages = [];
+    for (const code of LOCALE_CODES) {
+      const posts = postsFor(collectionApi, code);
+      const total = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+      const urlFor = (i) => `${localePrefix(code)}/blog${i > 0 ? `/${i}` : ""}/`;
+      const hrefs = Array.from({ length: total }, (_, i) => urlFor(i));
+
+      for (let i = 0; i < total; i++) {
+        pages.push({
+          locale: code,
+          pageNumber: i,
+          url: urlFor(i),
+          hrefs,
+          previous: i > 0 ? urlFor(i - 1) : null,
+          next: i < total - 1 ? urlFor(i + 1) : null,
+          posts: posts.slice(i * PAGE_SIZE, (i + 1) * PAGE_SIZE),
+        });
+      }
+    }
+    return pages;
+  });
+
+  // One entry per tag per locale, built from that locale's own posts. Eleventy's
+  // automatic frontmatter tag collections are global, so once blog_fr posts
+  // carry `tags: [seo]` a `collections.seo` lookup mixes languages.
+  eleventyConfig.addCollection("tagPages", function (collectionApi) {
+    const pages = [];
+    for (const code of LOCALE_CODES) {
+      const byTag = new Map();
+      for (const post of postsFor(collectionApi, code)) {
+        for (const tag of post.data.tags || []) {
+          const slug = String(tag).toLowerCase();
+          if (!byTag.has(slug)) byTag.set(slug, []);
+          byTag.get(slug).push(post);
+        }
+      }
+      for (const [tag, posts] of byTag) {
+        pages.push({
+          locale: code,
+          tag,
+          posts,
+          url: `${localePrefix(code)}/blog/tags/${tag}/`,
+        });
+      }
+    }
+    return pages;
   });
 
   return {

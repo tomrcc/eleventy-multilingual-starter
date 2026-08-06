@@ -5,7 +5,9 @@
 		"install_command": "npm i",
 		"build_command": "npm run build",
 		"output_path": "_site",
-		"environment_variables": [],
+		"environment_variables": [
+			{ "key": "CLOUDCANNON_SYNC_PATHS", "value": "/rosey/" }
+		],
 		"preserved_paths": "node_modules/",
 		"preserve_output": true,
 		"include_git": false,

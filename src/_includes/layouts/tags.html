@@ -2,13 +2,16 @@
 layout: layouts/layout.html
 ---
 <div class="py-[96px]">
+    {%- comment -%}
+      The tag label is shared with the chips in partials/blog/summary.html via
+      the `tags:` namespace, so a tag is translated once and reads the same
+      everywhere. The slug itself stays English — it's the URL.
+    {%- endcomment -%}
     <h1
       class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-center my-12"
-    >
-      {{title}}
-    </h1>
+      data-rosey="{{ tagPage.tag }}">{{ tagPage.tag | tagLabel }}</h1>
     <section class="blog-index mx-auto">
-        {% assign posts = collections[ tag ] %}
+        {% assign posts = tagPage.posts %}
         {% include 'partials/blog/list.html' %}
     </section>
 </div>

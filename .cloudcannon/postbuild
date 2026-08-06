@@ -1,1 +1,24 @@
-echo "$ELEVENTY_ENV"
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Scan the built HTML for data-rosey keys into rosey/base.json.
+npx rosey generate --source _site
+
+# Create/refresh rosey/locales/{fr,de}.json from those keys, and write the
+# connector's locale manifest to _site/_rcc/locales.json. Drop --locales once
+# the locale files exist — they're auto-detected from rosey/locales after that.
+npx rosey-cloudcannon-connector write-locales --source rosey --dest _site --locales fr,de
+
+# Copy the browser client to _site/_rcc/client.mjs. Eleventy doesn't bundle
+# browser JS, so layout.html imports that URL rather than a bare specifier.
+# Has to run before the mv, so the file is inside the tree Rosey copies through.
+npx rosey-cloudcannon-connector install-client --dest _site
+
+# Build the translated site. No --default-language-at-root, so English moves
+# from / to /en/ and Rosey writes a language-detecting redirect at the root.
+# --exclusions overrides Rosey's default of '\.(html?|json)$' — the default
+# would strip _rcc/locales.json, and without the manifest there's no switcher.
+rm -rf ./_untranslated_site
+mv ./_site ./_untranslated_site
+npx rosey build --source _untranslated_site --dest _site \
+  --default-language en --exclusions "\.(html?)$"

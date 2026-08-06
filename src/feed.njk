@@ -6,12 +6,15 @@ eleventyExcludeFromCollections: true
     <channel>
         <title>{{ site.site_title }}</title>
         <description>{{ site.description }}</description>
-        <link>{{ site.base_url }}</link>
-        <language>en-us</language>
+        {#- The default language is served under /en/ after `rosey build`
+            relocates it, so the feed has to point there rather than at the
+            build-time root. This feed covers the default language only. -#}
+        <link>{{ site.base_url }}{{ i18n.default_locale }}/</link>
+        <language>{{ i18n.default_locale }}</language>
         {%- for post in collections.posts %}
             <item>
                 <title>{{ post.data.title }}</title>
-                <link>{{ site.base_url }}{{ post.url }}</link>
+                <link>{{ site.base_url }}{{ i18n.default_locale }}{{ post.url }}</link>
                 <pubDate>{{ post.date }}</pubDate>
             </item>
         {%- endfor %}

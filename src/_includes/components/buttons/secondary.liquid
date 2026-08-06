@@ -1,12 +1,17 @@
+{%- comment -%}
+  See buttons/primary.liquid — the key wraps only the label so the icon markup
+  stays out of the translated value.
+{%- endcomment -%}
 <button
+  data-rosey-ns="{{ _uuid }}"
   style="--hover_brightness: {{ hover_brightness }}; background-color: transparent; border: 2px solid {{text_color}}"
   class="button">
-  <a style="color: {{text_color}}" href="{{button_link}}">
+  <a style="color: {{text_color}}" href="{{ button_link | localizeUrl: locale }}">
     {% if button_icon %}
       <span class="button__icon">
         {% include "components/icon", icon: button_icon %}
       </span>
     {% endif %}
-    {{button_text}}
+    <span data-rosey="button_text">{{ button_text }}</span>
   </a>
 </button>
