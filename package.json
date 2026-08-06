@@ -31,7 +31,7 @@
     "markdown-it": "^14.1.0",
     "npm-run-all2": "^8.0.4",
     "rosey": "^2.3.10",
-    "rosey-cloudcannon-connector": "github:CloudCannon/rcc#fast-follow-fix"
+    "rosey-cloudcannon-connector": "^2.0.1"
   },
   "overrides": {
     "sharp": "^0.35.3"
