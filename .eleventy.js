@@ -15,8 +15,7 @@ const md = new MarkdownIt({ html: true });
 
 const PAGE_SIZE = 3;
 
-// Tag slugs are the URL and stay lowercase; only the label is translated. One
-// helper so every render site emits the same string — Rosey matches whole
+// One helper so every render site emits the same label. Rosey matches whole
 // strings per key, so "Seo" in one place and "SEO" in another is a permanently
 // stale translation.
 const TAG_LABEL_OVERRIDES = { seo: "SEO", cms: "CMS", rss: "RSS" };
@@ -114,16 +113,13 @@ module.exports = async function (eleventyConfig) {
     }).format(new Date(date));
   });
 
-  // Rosey rewrites internal links on the pages it generates, but leaves
-  // pre-existing locale pages (our blog_fr/blog_de output) alone — that's what
-  // makes split-by-directory work. So locale pages have to prefix their own
-  // links, while default-language pages stay bare for Rosey to handle.
+  // Rosey rewrites links on the pages it generates but leaves pre-existing
+  // locale pages alone, so those have to prefix their own.
   eleventyConfig.addLiquidFilter("localizeUrl", function (url, locale) {
     if (!url || !locale || locale === DEFAULT_LOCALE) return url;
     if (!url.startsWith("/") || url.startsWith("//")) return url;
-    // Skip anything with a file extension (/feed.xml, /assets/x.pdf). Those are
-    // emitted once at the root, so prefixing them points at nothing. Rosey
-    // leaves them alone on generated pages for the same reason.
+    // Extensioned paths (/feed.xml) are emitted once at the root, so a prefix
+    // points at nothing. Rosey skips them for the same reason.
     if (/\.[a-z0-9]+$/i.test(url)) return url;
     return `/${locale}${url}`;
   });
@@ -141,9 +137,8 @@ module.exports = async function (eleventyConfig) {
     );
   }
 
-  // One entry per output page of the blog index, across every locale. Lets a
-  // single blog.md template serve all locales, so its shared strings live in
-  // one file and get one Rosey key.
+  // One entry per output page of the blog index, across every locale, so a
+  // single blog.md serves them all and its shared strings get one Rosey key.
   eleventyConfig.addCollection("blogListingPages", function (collectionApi) {
     const pages = [];
     for (const code of LOCALE_CODES) {
@@ -167,9 +162,9 @@ module.exports = async function (eleventyConfig) {
     return pages;
   });
 
-  // One entry per tag per locale, built from that locale's own posts. Eleventy's
-  // automatic frontmatter tag collections are global, so once blog_fr posts
-  // carry `tags: [seo]` a `collections.seo` lookup mixes languages.
+  // Built per locale because Eleventy's automatic frontmatter tag collections
+  // are global: once blog_fr posts carry `tags: [seo]`, a `collections.seo`
+  // lookup mixes languages and a French tag page lists English posts.
   eleventyConfig.addCollection("tagPages", function (collectionApi) {
     const pages = [];
     for (const code of LOCALE_CODES) {

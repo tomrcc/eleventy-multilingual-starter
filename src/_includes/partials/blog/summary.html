@@ -8,12 +8,9 @@
         />
     </a>
     {%- comment -%}
-      `data-rosey-root`, not `data-rosey-ns`: root *resets* the namespace while
-      ns *appends* to it. These chips render inside pages with different roots
-      (blog, tags, a hero's UUID), so appending would mint a separate key per
-      page — `blog:tags:bells`, `tags:tags:bells` — instead of one shared
-      `tags:bells` translated once for the whole site. The slug stays English
-      because it's the URL.
+      `root` resets the namespace, `ns` appends. These chips render under
+      several different roots, so `ns` would mint a key per page instead of one
+      shared `tags:bells`. The slug stays English because it's the URL.
     {%- endcomment -%}
     <div class="blog-post-tag" data-rosey-root="tags">
         {% for tag in post.data.tags limit:2 %}

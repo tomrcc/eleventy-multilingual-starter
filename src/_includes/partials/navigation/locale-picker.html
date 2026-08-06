@@ -1,11 +1,7 @@
 {%- comment -%}
-  Every language is served under a /{code}/ prefix, including the default. In
-  the untranslated build the default-language pages sit at the root and
-  `rosey build` relocates them to /en/, so we link to /en/ here even though
-  that path doesn't exist yet at build time.
-
-  `data-rosey-ignore` is essential: without it Rosey rewrites these hrefs on
-  the pages it generates, and a /fr/ page would link to /fr/fr/about/.
+  Links to /en/ even though that path doesn't exist at build time — Rosey
+  relocates the default language there. `data-rosey-ignore` is essential:
+  without it Rosey rewrites these hrefs and /fr/ links to /fr/fr/about/.
 {%- endcomment -%}
 {%- assign segs = page.url | remove_first: '/' | split: '/' -%}
 {%- assign first = segs | first -%}
@@ -29,14 +25,13 @@
 
 <script>
   if (window.inEditorMode) {
-    // The connector injects its own floating switcher in the Visual Editor;
-    // a second picker competes with it.
+    // The connector injects its own switcher, which this would compete with.
     document.querySelectorAll("nav[aria-label='Language']").forEach(function (nav) {
       nav.style.display = "none";
     });
   } else {
-    // The build-time HTML always reflects the default language, so the active
-    // state has to be resolved in the browser.
+    // Build-time HTML always reflects the default language, so active state
+    // has to be resolved in the browser.
     document.querySelectorAll("nav[aria-label='Language'] a").forEach(function (link) {
       var active = link.pathname === window.location.pathname;
       link.classList.toggle("locale-picker__link--active", active);

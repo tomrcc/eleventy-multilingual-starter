@@ -5,13 +5,10 @@
 {%- assign _description = seo.page_description | default: site.description -%}
 
 {%- comment -%}
-  Rosey scans <head>, and untagged head text is copied verbatim onto every
-  generated page — so a <title> without a key stays English forever. But the
-  keys have to be opt-in per page, never a layout-wide default: a
-  split-by-directory post (src/pages/blog_fr/*) already has a translated title
-  in its own frontmatter, and a Rosey key there would overwrite it with the
-  shared English original. Those pages set `rosey_seo: false` in
-  _11ty_config/post-data.js.
+  Rosey copies untagged head text verbatim onto generated pages, so a <title>
+  without a key stays English forever. Keys are opt-in per page rather than a
+  layout default: split-by-directory posts already carry a translated title in
+  their own frontmatter, and a key there would overwrite it.
 {%- endcomment -%}
 {%- assign _title_key = rosey_title_key -%}
 {%- assign _desc_key = rosey_description_key -%}
@@ -78,7 +75,7 @@
 {% endif %}
 
 {%- comment -%}
-  Root-relative so Rosey rewrites it per locale. An absolute URL would leave
+  Root-relative so Rosey rewrites it per locale; an absolute URL would leave
   every translated page claiming the default language's URL as canonical.
 {%- endcomment -%}
 {% if seo.canonical_url %}

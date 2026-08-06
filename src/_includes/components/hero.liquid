@@ -1,8 +1,7 @@
 {%- comment -%}
-  `data-rosey-ns="{{ _uuid }}"` lives on the component itself, not on the loop
-  in component-page.html. The loop element is what CloudCannon clones when an
-  editor adds or reorders a block, and a cloned namespace silently collides.
-  The UUID keeps keys stable when blocks move.
+  The namespace lives on the component, not on the loop in
+  component-page.html: CloudCannon clones the loop element when a block is
+  added or reordered, and a cloned namespace silently collides.
 {%- endcomment -%}
 <section data-rosey-ns="{{ _uuid }}" style="--headingGradientColor: {{heading.heading_gradient_color}}; background-color: {{background_color}};">
   <div class="hero-container">

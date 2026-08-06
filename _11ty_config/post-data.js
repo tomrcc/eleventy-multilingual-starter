@@ -6,8 +6,8 @@ function showDraft(data) {
 	return isDevEnv || data.draft !== true;
 }
 
-// Shared directory data for every blog tree. src/pages/blog/blog.11tydata.js and
-// its blog_fr/blog_de siblings are one-line calls into this.
+// Shared directory data for every blog tree; the .11tydata.js files are
+// one-line calls into this.
 module.exports = function postData(code) {
 	const prefix = localePrefix(code);
 
@@ -15,9 +15,8 @@ module.exports = function postData(code) {
 		layout: "layouts/post.html",
 		locale: code,
 		posts_collection: LOCALES[code].collection,
-		// Split-by-directory pages carry their own translated frontmatter, so the
-		// head must not be tagged with Rosey keys — a translated value would
-		// overwrite it. See partials/seo.html.
+		// These pages carry their own translated frontmatter, so a Rosey key on
+		// the head would overwrite it. See partials/seo.html.
 		rosey_seo: false,
 		hide_locale_switcher: true,
 		eleventyComputed: {

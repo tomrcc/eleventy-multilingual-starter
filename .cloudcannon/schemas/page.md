@@ -1,7 +1,7 @@
 ---
 title:
-# Tags this page's <title> and meta description with Rosey keys so they get
-# translated. Blog posts deliberately leave this off — see partials/seo.html.
+# Adds Rosey keys to <title> and the meta description. Blog posts leave this
+# off — see partials/seo.html.
 rosey_seo: true
 seo:
   page_description:

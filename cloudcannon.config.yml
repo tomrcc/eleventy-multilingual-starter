@@ -1,8 +1,7 @@
 timezone: America/New_York
 
-# No `source:` key. Rosey's locale files live at the repo root (rosey/locales),
-# and a `source` subdirectory puts them outside the tree CloudCannon resolves
-# paths against — so every path below is repo-root-relative instead.
+# Paths are repo-root-relative. A `source:` key would put rosey/locales outside
+# the tree CloudCannon resolves paths against, breaking locale-file editing.
 
 commit_templates:
   - label: Default message
@@ -17,9 +16,9 @@ paths:
 collections_config:
   pages:
     path: src/pages
-    # Every language is served under a prefix, including the default — the
-    # postbuild omits `--default-language-at-root`, so `rosey build` relocates
-    # the English pages from / to /en/ and leaves a redirect at the root.
+    # Every language is served under a prefix, including the default: the
+    # postbuild omits `--default-language-at-root`, so `rosey build` moves the
+    # English pages from / to /en/ and leaves a redirect at the root.
     url: '/en/[full_slug]/'
     glob:
       - '!blog/*'
@@ -54,7 +53,7 @@ collections_config:
   posts:
     path: src/pages/blog
     # Slug comes from the filename, not the title, so every language's copy of
-    # a post shares one URL path — see _11ty_config/post-data.js.
+    # a post shares one URL path.
     url: '/en/blog/[full_slug]/'
     icon: article
     _enabled_editors:
@@ -62,7 +61,7 @@ collections_config:
       - visual
     _inputs:
       # Multiselect, not free text: a tag slug is the URL and is shared across
-      # every language, so a typo forks the taxonomy and orphans a tag page.
+      # every language, so a typo forks the taxonomy.
       tags:
         type: multiselect
         options:
@@ -111,10 +110,9 @@ collections_config:
         hide_extra_inputs: false
         remove_empty_inputs: false
         remove_extra_inputs: true
-  # Split-by-directory translations: a whole file per language, so post bodies
-  # and frontmatter are translated as content rather than as Rosey keys. These
-  # mirror the English posts filename-for-filename, so adding a post means
-  # adding it here too — hence add is disabled.
+  # A whole file per language, so post bodies and frontmatter are translated as
+  # content rather than as Rosey keys. Add is disabled because these must
+  # mirror the English posts filename-for-filename.
   posts_fr:
     path: src/pages/blog_fr
     url: '/fr/blog/[full_slug]/'
@@ -148,8 +146,8 @@ collections_config:
     disable_add: true
     disable_add_folder: true
     disable_file_actions: false
-  # Everything tagged with `data-rosey` in the templates lands here, one entry
-  # per key. Deliberately has no `url:` — it's a data surface, not a page.
+  # Everything tagged with `data-rosey` lands here, one entry per key. No
+  # `url:` — it's a data surface, not a page.
   locales:
     path: rosey/locales
     name: Locales

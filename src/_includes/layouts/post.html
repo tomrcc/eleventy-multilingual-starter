@@ -2,10 +2,8 @@
 layout: layouts/layout.html
 ---
 {%- comment -%}
-  Nothing in the article is tagged with `data-rosey`. Post bodies are translated
-  by having a whole file per language (src/pages/blog_fr/, blog_de/), so these
-  values already arrive translated from frontmatter. `rosey_seo: false` and
-  `hide_locale_switcher: true` come from _11ty_config/post-data.js.
+  Nothing here is tagged with `data-rosey`: posts have a whole file per
+  language, so these values arrive already translated from frontmatter.
 {%- endcomment -%}
 <div class="py-[48px] md:py-[96px] px-8">
     <article class="max-w-screen-md mx-auto">
@@ -48,9 +46,8 @@ layout: layouts/layout.html
     data-rosey-root=""
   >
     {%- comment -%}
-      Resetting the root to "" puts this heading in the global namespace, so
-      every post in every language shares one `recent_posts` translation
-      instead of one per post.
+      An empty root drops to the global namespace, so every post in every
+      language shares one `recent_posts` translation instead of one per post.
     {%- endcomment -%}
     <h2 class="text-2xl" data-rosey="recent_posts">Recent Posts</h2>
     <div class="grid sm:grid-cols-2 gap-5 mt-5">

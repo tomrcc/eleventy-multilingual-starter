@@ -1,7 +1,6 @@
 {%- comment -%}
-  The key goes on a span wrapping only the label, not on the <a>. Rosey captures
-  an element's whole innerHTML, so a key on the link would swallow the icon
-  markup and re-inject it alongside the template's own copy on translated pages.
+  Rosey captures an element's whole innerHTML, so the key wraps only the label:
+  on the <a> it would swallow the icon and duplicate it on translated pages.
   Buttons carry their own `_uuid` because one block can hold several.
 {%- endcomment -%}
 <button data-rosey-ns="{{ _uuid }}" style="--hover_brightness: {{ hover_brightness }}; background-color: {{background_color}}" class="button">

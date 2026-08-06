@@ -30,12 +30,10 @@
     </head>
     <body>
         {%- comment -%}
-          `data-rcc` marks the snapshot boundary the connector diffs when
-          swapping languages — it has to wrap the header and footer so their
-          text is translatable, and it can never be <body> itself.
-          `data-rcc-exclude` hides the connector's language switcher on pages
-          whose translations come from their own content file rather than a
-          Rosey key (see partials/seo.html and _11ty_config/post-data.js).
+          `data-rcc` is the snapshot boundary the connector diffs when swapping
+          languages. It must wrap header and footer for their text to be
+          translatable, and can never be <body> itself. `data-rcc-exclude`
+          hides the switcher on pages translated by content file, not by key.
         {%- endcomment -%}
         {%- assign rcc_exclude = '' -%}
         {%- if hide_locale_switcher -%}
@@ -49,9 +47,8 @@
           {% include 'partials/navigation/footer.html' %}
         </div>
 
-        <!-- Load the live-editing bundles only inside the Visual Editor. Eleventy
-             doesn't bundle browser JS, so the connector is imported by URL from
-             the copy that `install-client` writes into the build output. -->
+        <!-- Eleventy doesn't bundle browser JS, so the connector is imported by
+             URL from the copy `install-client` writes into the build output. -->
         <script>
           if (window.inEditorMode) {
             import("/register-components.js").catch((error) => {

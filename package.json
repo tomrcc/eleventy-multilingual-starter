@@ -11,7 +11,8 @@
     "tailwind:watch": "tailwindcss -i src/assets/styles/tailwind.css -o _site/assets/styles/tailwind.css --watch",
     "tailwind:build": "tailwindcss -i src/assets/styles/tailwind.css -o _site/assets/styles/tailwind.css",
     "start": "npm-run-all sass:build tailwind:build --parallel sass:watch tailwind:watch eleventy:watch",
-    "build": "npm-run-all sass:build tailwind:build eleventy:build"
+    "clean": "rm -rf _site _untranslated_site",
+    "build": "npm-run-all clean sass:build tailwind:build eleventy:build"
   },
   "keywords": [],
   "author": "",
