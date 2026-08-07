@@ -123,9 +123,12 @@ Opt-in is deliberate, not laziness: blog posts set `rosey_seo: false`, because t
 1. Add the code to `LOCALES` in `_11ty_config/locales.js`.
 2. Create `src/pages/blog_<code>/` with a `blog_<code>.11tydata.js` that calls the shared factory.
 3. Add a `posts_<code>` collection and a `data_config.locales_<code>` entry to `cloudcannon.config.yml`, and put the collection in the Blogging group.
-4. Add the code to `--locales` in `.cloudcannon/postbuild`.
+4. Add `'!blog_<code>/*'` to the `pages` collection's `glob` in `cloudcannon.config.yml`. Without it the new posts appear in both Pages and `posts_<code>`, and the Pages entry opens them with the wrong schema.
+5. Add the code to `--locales` in `.cloudcannon/postbuild`, so the first build writes `rosey/locales/<code>.json`. Until that file exists the language is missing from `_rcc/locales.json` and the connector's switcher won't offer it.
 
 Everything else — the locale picker, the `data-rcc-exclude` list, the tag pages, the blog listing — is derived from that one map.
+
+There's no editor-facing way to do this: adding a language is a code change. Editors only ever see the result, in the connector's translate flow.
 
 ### Editable regions
 
